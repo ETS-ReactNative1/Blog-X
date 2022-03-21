@@ -1,7 +1,10 @@
-# courses App
+# Installation
 
-React-Native template/kit for courses App
+*(Assuming, node, npm/yarn installed)*
+- **cd Project700-main && yarn install**
+- **cd ios && pod install**
 
-### Screenshots
+# Run
 
-![Screenshot 1](https://i.imgur.com/3bDczKh.png) ![Screenshot 2](https://i.imgur.com/wDsb3bZ.png) ![Screenshot 3](https://i.imgur.com/rECKFNt.png)
+- On Terminal 1, **cd Project700-main && yarn start**
+- On Terminal 2, **cd ios && yarn ios --simulator="iPad Pro (11-inch) (3rd generation)"**
