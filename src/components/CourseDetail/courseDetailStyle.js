@@ -125,6 +125,10 @@ const styles = StyleSheet.create({
   sectionScrollContainer: {
     paddingHorizontal: 16,
     paddingBottom: 60,
+  },
+  markText: {
+    fontSize: 8,
+    marginLeft: '48%',
   }
 });
 

@@ -13,107 +13,51 @@ import styles from './coursesListStyle';
 import {getIllustration, getBackground} from '../../utils';
 import {AuthContext} from '../../context';
 import {CourseDetail} from '../../components';
+import LinearGradient from 'react-native-linear-gradient';
+import { RotationGestureHandler } from 'react-native-gesture-handler';
 
 MaterialIcons.loadFont().then();
 //const categories = state?.courses;
 
-const categories = [
+const sample = [
   {
     id: 0,
     title: 'An introduction to deep learning',
     isBookmarked: false,
     progress: 100,
     isLevel : "easy",
-    image:
-      'https://ieeexplore.ieee.org/xploreAssets/images/absImages/01491134.png',
-  },
-  {
-    id: 1,
-    title: 'An introductory review of Deep Learning for Prediction Models with Big Data',
-    isBookmarked: true,
-    progress: 85,
-    isLevel : "easy",
-    image:
-      'https://localist-images.azureedge.net/photos/38261105051636/card/b0fc0ea2634a78bf6490d63f4b69e66d5bb13e81.jpg',
-  },
-  {
-    id: 2,
-    title: 'Reducing the dimensionality of data with neural networks',
-    isBookmarked: false,
-    progress: 100,
-    isLevel : "easy",
-    image:
-      'https://ieeexplore.ieee.org/xploreAssets/images/absImages/01491134.png',
-  },
-  {
-    id: 3,
-    title: 'Introduction to Convolutional Neural Networks',
-    isBookmarked: true,
-    progress: 100,
-    isLevel : "medium",
-    image:
-      'https://ieeexplore.ieee.org/xploreAssets/images/absImages/01491134.png',
-  },
-  {
-    id: 4,
-    title: 'Visualising and Understanding Convolutional Networks',
-    isBookmarked: true,
-    progress: 70,
-    isLevel : "medium",
-    image:
-      'https://ieeexplore.ieee.org/xploreAssets/images/absImages/01491134.png',
-  },
-  {
-    id: 5,
-    title: 'On the importance of initialization and momentum in deep learning',
-    isBookmarked: true,
-    progress: 90,
-    isLevel : "hard",
-    image:
-      'https://localist-images.azureedge.net/photos/38261105051636/card/b0fc0ea2634a78bf6490d63f4b69e66d5bb13e81.jpg',
-  },
-  {
-    id: 6,
-    title: 'Adam:A method for stochastic optimization',
-    isBookmarked: true,
-    progress: 35,
-    isLevel : "hard",
-    image:
-      'https://ieeexplore.ieee.org/xploreAssets/images/absImages/01491134.png',
-  },
-  {
-    id: 7,
-    title: 'Improved Adam Optimizer for Deep Neural Networks',
-    isBookmarked: true,
-    progress: 84,
-    isLevel : "hard",
-    image:
-    'https://ieeexplore.ieee.org/xploreAssets/images/absImages/01491134.png',
-  },
+    image:''
+},
 ];
 
 export function coursesList({route, navigation}) {
-  const course = route?.params;
-
+  const course= route?.params;
+  // console.log(course.levels["1"]);
   const {state, dispatch} = useContext(AuthContext);
   const [data, setData] = useState({
-    tabs: ['Easy', 'Medium', 'Hard'],
-    activeTab: 'Easy',
-    displayedCategories: categories,
+    tabs: ['Level 1', 'Level 2', 'Level 3'],
+    activeTab: 'Level 1',
+    displayedCategories: course.levels["1"],
   });
-
+  const ratings = []
+  for (let i = 1; i <= parseInt(course.rating); i++){
+    ratings.push("i");
+  }
   const handleTabPress = (tab, index) => {
     let {activeTab, displayedCategories} = data;
     activeTab = tab;
 
     if (index === 0) {
-        displayedCategories = categories?.filter(
-          (category) => category.isLevel == "easy");
+        // displayedCategories = categories?.filter(
+        //   (category) => category.isLevel == "easy");
+        displayedCategories = course.levels["1"];
       } else if (index === 1) {
-      displayedCategories = categories?.filter((category) => category.isLevel == "medium");
+      // displayedCategories = categories?.filter((category) => category.isLevel == "medium");
+      displayedCategories = course.levels["2"];
     } else if (index === 2) {
-      displayedCategories = categories?.filter((category) => category.isLevel == "hard");
-    } 
+    //   displayedCategories = categories?.filter((category) => category.isLevel == "hard");
+    displayedCategories = course.levels["3"];
+     } 
 
     setData({...data, activeTab, displayedCategories});
   };
@@ -141,7 +85,10 @@ export function coursesList({route, navigation}) {
       </View>   
       <View style={styles.coursesListContent}>
       <Text style={styles.coursesListTitle}>
-          {course?.title} Papers List
+          {course?.name+ " "}
+          {ratings?.map((index) => (
+          <MaterialIcons style={styles.stars} name="stars" size={15} color="orange" />
+          ))}
         </Text>
         <View style={styles.tabHeaderContainer}>
       {data?.tabs?.map((tab, index) => (
@@ -172,7 +119,7 @@ export function coursesList({route, navigation}) {
              <CourseDetail courseDetail={category}/>
              ))}
           </View>
-        </ScrollView>
+     
         {/* <FlatList
           data={state?.courses}
           keyExtractor={() => shortid.generate()}
@@ -181,6 +128,19 @@ export function coursesList({route, navigation}) {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.sectionScrollContainer}
         /> */}
+        
+          <View style={styles.createButton}><TouchableOpacity onPress={() => handleNavigation('updateInitRoadmap', course)}>
+        <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{x: 1, y: 1 }}
+        colors={[ '#545352', '#737271', '#B3B1AF']}
+        style={styles.gradBox}>
+          <Text style= {styles.createText}>Edit Roadmap</Text>  
+          <MaterialIcons style = {styles.icon1} name="mode-edit" size={15} color="white"/>
+          </LinearGradient>         
+          </TouchableOpacity >
+                </View>
+        </ScrollView>
       </View>
     </View>
   );

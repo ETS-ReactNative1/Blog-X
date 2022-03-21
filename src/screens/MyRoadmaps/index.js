@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {
   View,
   Text,
@@ -17,13 +17,12 @@ import FriesMenu from '../../assets/icons/FriesMenu.png';
 import ProfilePhoto from '../../assets/photos/photo-1494790108377-be9c29b29330.jpg';
 import {getIllustration, getBackground} from '../../utils';
 import {AuthContext} from '../../context';
-//import {CreateRoadmap} from '../CreateRoadmap';
 
 MaterialIcons.loadFont().then();
 Ionicons.loadFont().then();
 MaterialCommunityIcons.loadFont().then();
 
-const categories = [
+const sample = [
   {
     id: 0,
     title: 'Deep Learning',
@@ -60,6 +59,11 @@ const categories = [
 
 export function MyRoadmaps({navigation}) {
   const {state, dispatch} = useContext(AuthContext);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetchApiCall();
+},[])
 
   const [data, setData] = useState({
     tabs: ['Learning', 'Created'],
@@ -72,11 +76,9 @@ export function MyRoadmaps({navigation}) {
     activeTab = tab;
 
     if (index === 0) {
-        displayedCategories = categories?.filter(
-          (category) => category.isLearning,
-        );
+        displayedCategories = categories
       } else if (index === 1) {
-      displayedCategories = categories?.filter((category) => category.isCreated);
+      displayedCategories = categories?.filter((category) => category.name === 'Data Structure');
     } 
 
     setData({...data, activeTab, displayedCategories});
@@ -89,7 +91,19 @@ export function MyRoadmaps({navigation}) {
   const handleDrawer = () => {
     navigation?.openDrawer();
   };
-
+  const fetchApiCall = async () => {
+    try {
+     const response = await fetch("http://project700-backend.herokuapp.com/roadmap", {
+      "method": "GET",
+    })
+    const json = await response.json();
+    setCategories(json.data);
+    //console.log(json.data)
+  } catch (error) {
+        console.log(error);
+      }
+    console.log("Inside fetch")
+  }
   return (
     <View style={styles.homeContainer}>
       <View style={styles.homeContent}>
@@ -133,34 +147,32 @@ export function MyRoadmaps({navigation}) {
                 key={shortid.generate()}
                 style={[
                   styles.categoryContainer,
-                  index % 2
-                    ? styles.categoryLongHeight
-                    : styles.categoryShortHeight,
-                  getBackground(category?.id),
+                    styles.categoryShortHeight,
+                  getBackground(Math.floor(Math.random() * (3))),
                 ]}
-                onPress={() => handleNavigation('coursesList', category)}>
+                onPress={() => handleNavigation('coursesList', category, data?.activeTab)}>
                 <ImageBackground
-                  source={getIllustration(category?.id)}
+                  source={getIllustration(Math.floor(Math.random() * (3)))}
                   style={styles.illustrationImage}
                   imageStyle={styles.backgroundStyle}>
                   <View style={styles.transparentBg}>
                     <Text style={styles.categoryTitletext}>
-                      {category?.title}
+                      {category?.name}
                     </Text>
                     <MaterialCommunityIcons name='account-edit'size={18} color="#000">
                     <Text style={styles.categoryNumbertext}>
-                      {category?.creator}
+                      {category?.author}
                       </Text>
                       </MaterialCommunityIcons> 
                       <Text style={styles.categoryNumbertext}>
-                       {category?.number}
+                       {category?.rating}
                     </Text>
                   </View>
                 </ImageBackground>
               </TouchableOpacity>            
             ))}
             {data?.activeTab === "Created" ? (
-            <View style={styles.addButton}><TouchableOpacity onPress={() => handleBookmark()}>
+            <View style={styles.addButton}><TouchableOpacity onPress={() => handleNavigation('initRoadmap', null)}>
                 <Ionicons name="add-circle" size={25} color="#000" />
               </TouchableOpacity><Text style={styles.addButtontext}>
                   Create New

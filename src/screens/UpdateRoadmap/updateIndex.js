@@ -12,7 +12,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import shortid from 'shortid';
-import styles from './createRoadmapStyle';
+import styles from './updateRoadmapStyle';
 import DraggableFlatList, {ScaleDecorator} from 'react-native-draggable-flatlist'
 import {AuthContext} from '../../context';
 import axios from 'axios'
@@ -20,18 +20,54 @@ import axios from 'axios'
 MaterialIcons.loadFont().then();
 Ionicons.loadFont().then();
 
-export function createRoadmap({route, navigation}) {
+export function updateRoadmap({route, navigation}) {
 
-  const {roadmapLabel, levels, tags} = route.params;
+  const {roadmapLabel, levels, tags, roadmap} = route.params;
 
   const [label, setLabel] = useState("");
   const [url, setUrl] = useState("");
+  var i = 1;
+  const l1= []; const l2 = []; const l3 = [];
 
-  const [initialElements, changeEl]  = useState([
-  ]);
+  roadmap.levels["1"].filter((category) => {
+    if(category){
+      l1.push( {
+        "key": idx,
+        "label": category.title,
+        "link": category.link,
+        "level": '1'
+      });
+      i++;
+    }
+  });
+  roadmap.levels["2"].filter((category) => {
+    if(category){
+      l2.push( {
+        "key": idx,
+        "label": category.title,
+        "link": category.link,
+        "level": '2'
+      });
+      i++;
+    }
+  });
+  roadmap.levels["3"].filter((category) => {
+    if(category){
+      l3.push( {
+        "key": idx,
+        "label": category.title,
+        "link": category.link,
+        "level": '3'
+      });
+      i++;
+    }
+  });
+
+  var existingArray = [...l1, ...l2, ...l3];
+
+  const [initialElements, changeEl]  = useState(existingArray);
   const [exampleState, setExampleState] = useState(initialElements);
-  const [idx, incr] = useState(1);
-
+  const [idx, incr] = useState(i);
   const {state, dispatch} = useContext(AuthContext);
   const [data, setData] = useState({
     tabs: ['1', '2', '3'],
@@ -111,17 +147,19 @@ export function createRoadmap({route, navigation}) {
     "3": level3List
   }
 };
-    const response = await axios.post(`http://project700-backend.herokuapp.com/roadmap`, postData);
+var id = roadmap.id;
+console.log(id);
+    const response = await axios.put(`http://project700-backend.herokuapp.com/roadmap`+id, postData);
     try{
     if (response.status === 200) {
-      console.log(` You have created: ${JSON.stringify(response.data)}`);
+      console.log(` You have updated: ${JSON.stringify(response.data)}`);
     } else {
       throw new Error("An error has occurred");
     }
   } catch (error) {
    console.log("An error has occurred");
   }
-  navigation?.navigate('DrawerStack', {screen: 'Home'});
+  navigation?.navigate('DrawerStack', {screen: 'MyRoadmaps'});
   }
 
   const renderItem = ({ item, drag, isActive }) => {
@@ -174,7 +212,7 @@ export function createRoadmap({route, navigation}) {
             <MaterialIcons name="keyboard-arrow-left" size={25} color="#000" />
           </TouchableOpacity>
           <Text style={styles.coursesListTitle}>
-          Create Roadmap
+          Update Roadmap
         </Text>
       </View>   
       <View style={styles.coursesListContent}>
@@ -268,7 +306,7 @@ export function createRoadmap({route, navigation}) {
         end={{x: 1, y: 1 }}
         colors={['#7F36C2','#935DC5', '#AA91C0']}
         style={styles.gradBox}>
-          <Text style= {styles.createText}>Create</Text>  
+          <Text style= {styles.createText}>Update</Text>  
           <MaterialIcons style = {styles.icon1} name="arrow-forward" size={15} color="white"/>
           </LinearGradient>         
           </TouchableOpacity >

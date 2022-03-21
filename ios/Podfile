@@ -3,12 +3,10 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-
 target 'courses_app' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
-
 
   target 'courses_appTests' do
     inherit! :complete

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect, componentDidUpdate} from 'react';
 import {
   View,
   Text,
@@ -17,12 +17,13 @@ import FriesMenu from '../../assets/icons/FriesMenu.png';
 import ProfilePhoto from '../../assets/photos/photo-1494790108377-be9c29b29330.jpg';
 import {getIllustration, getBackground} from '../../utils';
 import {AuthContext} from '../../context';
+import axios from "axios";
 
 MaterialIcons.loadFont().then();
 Ionicons.loadFont().then();
 MaterialCommunityIcons.loadFont().then();
 
-const categories = [
+const sample = [
   {
     id: 0,
     title: 'Deep Learning',
@@ -31,35 +32,16 @@ const categories = [
     isBestRated: true,
     creator: 'J Xiong',
   },
-  {
-    id: 1,
-    title: 'Image Processing',
-    number: 2,
-    isTrendy: true,
-    isBestRated: true,
-    creator: 'Alpha01',
-  },
-  {
-    id: 2,
-    title: 'Cloud Security',
-    number: 9,
-    isTrendy: true,
-    isBestRated: false,
-    creator: 'R Sridhar',
-  },
-  {
-    id: 3,
-    title: 'Distributed Systems',
-    number: 10,
-    isTrendy: true,
-    isBestRated: true,
-    creator: 'JK Row',
-  },
 ];
 
 export function Home({navigation}) {
   const {state, dispatch} = useContext(AuthContext);
+  const [categories, setCategories] = useState([]);
 
+  useEffect(() => {
+    fetchApiCall();
+},[setCategories])
+//console.log(categories[0][0].author)
   const [data, setData] = useState({
     tabs: ['New', 'Trendy', 'Best rated'],
     activeTab: 'New',
@@ -67,6 +49,7 @@ export function Home({navigation}) {
   });
 
   const handleTabPress = (tab, index) => {
+ 
     let {activeTab, displayedCategories} = data;
     activeTab = tab;
 
@@ -90,7 +73,18 @@ export function Home({navigation}) {
   const handleDrawer = () => {
     navigation?.openDrawer();
   };
-
+  const fetchApiCall = async () => {
+    try {
+     const response = await fetch("http://project700-backend.herokuapp.com/roadmap", {
+      "method": "GET",
+    })
+    const json = await response.json();
+    setCategories(json.data);
+  } catch (error) {
+        console.log(error);
+      }
+    console.log("Inside fetch")
+  }
   return (
     <View style={styles.homeContainer}>
       <View style={styles.homeContent}>
@@ -100,6 +94,9 @@ export function Home({navigation}) {
           <Image source={FriesMenu} />
           <Image source={ProfilePhoto} style={styles.profilePhotoImage} />
         </TouchableOpacity>
+        <ScrollView
+          style={styles.scrollViewContent}
+          showsVerticalScrollIndicator={false}>
         <View style={styles.nameContainer}>
           <Text style={styles.nameText}>Hi</Text>
           <Text style={styles.usernameText}>{state?.username}</Text>
@@ -108,7 +105,7 @@ export function Home({navigation}) {
         <View style={styles.searchContainer}>
           <Ionicons name="search" size={23} color="#808080" />
           <TextInput
-            placeholder="Search for a course"
+            placeholder="Search for a topic"
             style={styles.searchInput}
           />
           <TouchableOpacity style={styles.dropdownContainer}>
@@ -140,36 +137,32 @@ export function Home({navigation}) {
             </TouchableOpacity>
           ))}
         </View>
-        <ScrollView
-          style={styles.scrollViewContent}
-          showsVerticalScrollIndicator={false}>
+       
           <View style={styles.tabBodyContainer}>
             {data?.displayedCategories?.map((category, index) => (
               <TouchableOpacity
                 key={shortid.generate()}
                 style={[
                   styles.categoryContainer,
-                  index % 2
-                    ? styles.categoryLongHeight
-                    : styles.categoryShortHeight,
-                  getBackground(category?.id),
+                  styles.categoryShortHeight,
+                  getBackground(Math.floor(Math.random() * (3))),
                 ]}
                 onPress={() => handleNavigation('coursesList', category)}>
                 <ImageBackground
-                  source={getIllustration(category?.id)}
+                  source={getIllustration(Math.floor(Math.random() * (3)))}
                   style={styles.illustrationImage}
                   imageStyle={styles.backgroundStyle}>
                   <View style={styles.transparentBg}>
                     <Text style={styles.categoryTitletext}>
-                      {category?.title}
+                      {category?.name}
                     </Text>
                     <MaterialCommunityIcons name='account-edit'size={18} color="#000">
                     <Text style={styles.categoryNumbertext}>
-                      {category?.creator}
+                      {category?.author}
                       </Text>
                       </MaterialCommunityIcons> 
                     <Text style={styles.categoryNumbertext}>
-                      {category?.number}
+                      {category?.rating}
                     </Text>
                   </View>
                 </ImageBackground>

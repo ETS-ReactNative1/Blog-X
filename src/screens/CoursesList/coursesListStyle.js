@@ -269,6 +269,33 @@ const styles = StyleSheet.create({
   bg3: {
     backgroundColor: '#96D8CA',
   },
+  createButton :{
+    marginBottom: 85,
+    marginLeft: '30%',
+    width: '40%',
+    justifyContent: 'center'
+  },
+  createText: {
+    fontSize: 15,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+  },
+  gradBox :{
+    margin: 1,
+    backgroundColor: 'white',
+    borderRadius: 22,
+    flexDirection: 'row', justifyContent: 'center', alignItems: 'center',
+  },
+  icon1 : {
+    marginLeft: -5,
+    marginRight: 10,
+  },
+  stars: {
+    marginLeft: '65%'
+  }
 });
 
 export default styles;

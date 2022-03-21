@@ -1,8 +1,7 @@
 import React from 'react';
 import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Home, coursesList} from '../screens';
-import { MyRoadmaps } from '../screens/MyRoadmaps';
+import {Home, coursesList,MyRoadmaps,createRoadmap, initRoadmap, updateInitRoadmap, updateRoadmap} from '../screens';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -32,7 +31,28 @@ const SingleStack = () => {
         component={coursesList}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="initRoadmap"
+        component={initRoadmap}
+        options={{headerShown: false}}
+      />
+       <Stack.Screen
+        name="createRoadmap"
+        component={createRoadmap}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="updateInitRoadmap"
+        component={updateInitRoadmap}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="updateRoadmap"
+        component={updateRoadmap}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
+    
   );
 };
 
