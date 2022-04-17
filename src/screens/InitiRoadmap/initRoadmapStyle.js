@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import { scale, verticalScale,   Scale, ScaledSheet } from 'react-native-size-matters';
+import ScaledSheet from 'react-native-scaled-sheet';
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   coursesListContainer: {
     flex: 1,
     backgroundColor: '#FFFFFF',
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   coursesListContent: {
-    top: '8%',
+    top: '9%',
     height: '100%',
     width: '100%',
     position: 'absolute',
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   coursesListTitle: {
     marginLeft:   70  ,
     fontWeight: 'bold',
-    fontSize:   16  ,
+    fontSize:   26  ,
     marginTop:  23  ,
   },
   scrollViewContent: {
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     height: 40,
-    fontSize: 15,
+    fontSize: 20,
     width: 350,
     margin: 1,
     borderRadius: 15,
@@ -142,7 +142,8 @@ const styles = StyleSheet.create({
   inputHeader: {
     marginLeft: '2%',
     marginBottom: '3%',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 20,
   },
   container: {
     flex: 1,

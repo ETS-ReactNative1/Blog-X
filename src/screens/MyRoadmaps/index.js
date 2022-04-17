@@ -31,30 +31,6 @@ const sample = [
     isLearning: true,
     creator: 'J Xiong',
   },
-  {
-    id: 1,
-    title: 'Image Processing',
-    number: 12,
-    isCreated: false,
-    isLearning: true,
-    creator: 'Alpha01',
-  },
-  {
-    id: 2,
-    title: 'Cloud Security',
-    number: 9,
-    isCreated: true,
-    isLearning: false,
-    creator: 'R Sridhar',
-  },
-  {
-    id: 3,
-    title: 'Distributed Systems',
-    number: 10,
-    isCreated: true,
-    isLearning: false,
-    creator: 'JK Row',
-  },
 ];
 
 export function MyRoadmaps({navigation}) {
@@ -66,7 +42,7 @@ export function MyRoadmaps({navigation}) {
 },[])
 
   const [data, setData] = useState({
-    tabs: ['Learning', 'Created'],
+    tabs: ['Learning', 'Created','Reading Lists'],
     activeTab: 'Learning',
     displayedCategories: categories,
   });
@@ -79,6 +55,9 @@ export function MyRoadmaps({navigation}) {
         displayedCategories = categories
       } else if (index === 1) {
       displayedCategories = categories?.filter((category) => category.name === 'Data Structure');
+    } 
+    else if (index === 2) {
+      displayedCategories = categories?.filter((category) => category.name === 'Intro to ML');
     } 
 
     setData({...data, activeTab, displayedCategories});
@@ -150,7 +129,7 @@ export function MyRoadmaps({navigation}) {
                     styles.categoryShortHeight,
                   getBackground(Math.floor(Math.random() * (3))),
                 ]}
-                onPress={() => handleNavigation('coursesList', category, data?.activeTab)}>
+                onPress={() => handleNavigation('readingList', category, data?.activeTab)}>
                 <ImageBackground
                   source={getIllustration(Math.floor(Math.random() * (3)))}
                   style={styles.illustrationImage}

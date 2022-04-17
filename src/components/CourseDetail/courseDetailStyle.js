@@ -1,6 +1,7 @@
-import {StyleSheet} from 'react-native';
-
-const styles = StyleSheet.create({
+import {StyleSheet, Dimensions} from 'react-native';
+//import ScaledSheet from 'react-native-scaled-sheet';
+import {ms, ScaledSheet} from 'react-native-size-matters';
+const styles = ScaledSheet.create({
   coursesListContainer: {
     flex: 1,
     backgroundColor: '#FFFFFF',
@@ -22,11 +23,11 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 16,
-    left: 16,
+    top: '16@ms',
+    left: '16@ms',
     backgroundColor: '#eee',
-    height: 32,
-    width: 32,
+    height: '32@ms',
+    width: '32@ms',
     borderRadius: 5,
     display: 'flex',
     alignItems: 'center',
@@ -38,15 +39,15 @@ const styles = StyleSheet.create({
     width: '100%',
     position: 'absolute',
     backgroundColor: '#fff',
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
-    paddingTop: 30,
+    borderTopLeftRadius: '50@ms',
+    borderTopRightRadius: '50@ms',
+    paddingTop: '30@ms',
   },
   coursesListTitle: {
     marginLeft: 30,
     fontWeight: 'bold',
-    fontSize: 16,
-    marginBottom: 15,
+    fontSize: '16@ms',
+    marginBottom: '15@ms',
   },
   scrollViewContent: {
     paddingTop: 15,
@@ -61,33 +62,33 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 1,
+      height: '1@ms',
     },
-    shadowOpacity: 0.18,
-    shadowRadius: 1.0,
+    shadowOpacity: '0.18@ms',
+    shadowRadius: '1.0@ms',
     elevation: 1,
-    paddingVertical: 7,
-    marginBottom: 30,
+    paddingVertical: '7@ms',
+    marginBottom: '30@ms',
     borderRadius: 5,
-    paddingHorizontal: 7,
+    paddingHorizontal: '7@ms',
     display: 'flex',
     flexDirection: 'row',
     overflow: 'hidden',
   },
   courseImage: {
-    height: 90,
-    width: 90,
-    marginRight: 10,
+    height: '90@ms',
+    width: '90@ms',
+    marginRight: '10@ms',
   },
   courseBackgroundStyle: {
     resizeMode: 'cover',
     position: 'absolute',
     top: 0,
-    borderRadius: 5,
+    borderRadius: '5@ms',
   },
   playButton: {
-    height: 30,
-    width: 30,
+    height: '30@ms',
+    width: '30@ms',
     backgroundColor: '#fff',
     borderRadius: 50,
     display: 'flex',
@@ -97,39 +98,89 @@ const styles = StyleSheet.create({
     left: '30%',
   },
   courseRightContainer: {display: 'flex', width: '85%'},
-  bookmarkIcon: {
+  saveIcon: {
     marginLeft: '63%',
+  },
+  bookmarkIcon: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   courseInfo: {
     fontWeight: 'bold',
     width: '69%',
     marginBottom: 'auto',
-    fontSize: 14,
+    fontSize: '14@ms',
   },
   progressBarContainer: {
     backgroundColor: '#EEEDF4',
-    height: 10,
+    height: '10@ms',
     width: '69%',
-    borderRadius: 20,
+    borderRadius: '20@ms',
   },
   progressBarItem: {
     backgroundColor: '#D9864E',
-    height: 10,
-    borderRadius: 20,
+    height: '10@ms',
+    borderRadius: '20@ms',
   },
   progressBarItemCompleted: {
     backgroundColor: '#0BCC79',
-    height: 10,
+    height: '10@ms',
     borderRadius: 20,
   },
   sectionScrollContainer: {
-    paddingHorizontal: 16,
-    paddingBottom: 60,
+    paddingHorizontal: '16@ms',
+    paddingBottom: '60@ms',
   },
   markText: {
-    fontSize: 8,
-    marginLeft: '48%',
-  }
+    fontSize: '8@ms',
+    marginLeft: '58%',   
+  },
+  centeredView: {
+    //maxHeight: '50%',
+    flex: 0.5,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: '30%',
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  },
+  closeIcon: {
+    marginLeft: '43%',
+    color: 'red'
+  },
 });
 
 

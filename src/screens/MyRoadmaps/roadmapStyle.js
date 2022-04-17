@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
+import ScaledSheet from 'react-native-scaled-sheet';
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   homeContainer: {
     flex: 1,
     backgroundColor: '#FFFFFF',

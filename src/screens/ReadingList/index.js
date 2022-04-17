@@ -9,23 +9,22 @@ import {
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import shortid from 'shortid';
-import styles from './coursesListStyle';
+import styles from './readingListStyle';
 import {getIllustration, getBackground} from '../../utils';
 import {AuthContext} from '../../context';
 import {CourseDetail} from '../../components';
 import LinearGradient from 'react-native-linear-gradient';
-import { RotationGestureHandler } from 'react-native-gesture-handler';
 
 MaterialIcons.loadFont().then();
 //const categories = state?.courses;
 
-export function coursesList({route, navigation}) {
+export function readingList({route, navigation}) {
   const course= route?.params;
   // console.log(course.levels["1"]);
   const {state, dispatch} = useContext(AuthContext);
   const [data, setData] = useState({
-    tabs: ['Level 1', 'Level 2', 'Level 3'],
-    activeTab: 'Level 1',
+    tabs: ['List'],
+    activeTab: 'List',
     displayedCategories: course.levels["1"],
   });
   const ratings = []
@@ -118,18 +117,6 @@ export function coursesList({route, navigation}) {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.sectionScrollContainer}
         /> */}
-        
-          <View style={styles.createButton}><TouchableOpacity onPress={() => handleNavigation('updateInitRoadmap', course)}>
-        <LinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{x: 1, y: 1 }}
-        colors={[ '#545352', '#737271', '#B3B1AF']}
-        style={styles.gradBox}>
-          <Text style= {styles.createText}>Edit Roadmap</Text>  
-          <MaterialIcons style = {styles.icon1} name="mode-edit" size={15} color="white"/>
-          </LinearGradient>         
-          </TouchableOpacity >
-                </View>
         </ScrollView>
       </View>
     </View>

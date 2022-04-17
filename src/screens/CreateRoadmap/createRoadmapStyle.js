@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { scale, verticalScale,   Scale, ScaledSheet } from 'react-native-size-matters';
+import ScaledSheet from 'react-native-scaled-sheet';
 
 const styles = ScaledSheet.create({
   coursesListContainer: {
@@ -34,7 +34,7 @@ const styles = ScaledSheet.create({
     justifyContent: 'center',
   },
   coursesListContent: {
-    top: '8%',
+    top: '9%',
     height: '100%',
     width: '100%',
     position: 'absolute',
@@ -46,7 +46,7 @@ const styles = ScaledSheet.create({
   coursesListTitle: {
     marginLeft:   70  ,
     fontWeight: 'bold',
-    fontSize:   16  ,
+    fontSize:   25  ,
     marginTop:  23  ,
   },
   scrollViewContent: {
@@ -93,12 +93,12 @@ const styles = ScaledSheet.create({
   },
   courseInfo: { 
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 22,
     color: "#1E3877",
     marginLeft: '2%',
   },
   courseLink: { 
-    fontSize: 13,
+    fontSize: 18,
     color: "#4E4E4E",
     marginLeft: '2%',
   },
@@ -111,6 +111,7 @@ const styles = ScaledSheet.create({
   addButtontext: {
     textAlign: 'center',
     color: 'white',
+    fontSize: 22,
   },
   sectionScrollContainer: {
     paddingHorizontal: 16,
@@ -124,7 +125,7 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
   },
   learnText: {
-    fontSize: 16,
+    fontSize: 22,
     marginBottom:  30  ,
     opacity: 0.6,
   },
@@ -142,7 +143,7 @@ const styles = ScaledSheet.create({
   },
   searchInput: {
     height: 40,
-    fontSize: 15,
+    fontSize: 20,
     width: 250,
     margin: 1,
     borderRadius: 15,
@@ -168,7 +169,7 @@ const styles = ScaledSheet.create({
     alignItems: 'center',
   },
   tabText: {
-    fontSize: 14,
+    fontSize: 22,
     fontWeight: 'bold',
   },
   activeTabText: {
@@ -212,11 +213,8 @@ const styles = ScaledSheet.create({
   },
   categoryTitletext: {
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 20,
     opacity: 0.9,
-  },
-  categoryNumbertext: {
-    fontSize: 13,
   },
   illustrationImage: {
     flex: 1,
@@ -252,7 +250,7 @@ const styles = ScaledSheet.create({
     justifyContent: 'center'
   },
   createText: {
-    fontSize: 15,
+    fontSize: 22,
     paddingVertical: 10,
     paddingHorizontal: 15,
     alignItems: 'center',

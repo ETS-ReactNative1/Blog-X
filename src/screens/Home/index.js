@@ -18,6 +18,7 @@ import ProfilePhoto from '../../assets/photos/photo-1494790108377-be9c29b29330.j
 import {getIllustration, getBackground} from '../../utils';
 import {AuthContext} from '../../context';
 import axios from "axios";
+import * as RNFS from 'react-native-fs';
 
 MaterialIcons.loadFont().then();
 Ionicons.loadFont().then();
@@ -40,6 +41,11 @@ export function Home({navigation}) {
 
   useEffect(() => {
     fetchApiCall();
+  //   RNFS.unlink(`${RNFS.DocumentDirectoryPath}/data structure.pdf`).then(res => {
+  // })
+  // .catch(err => {
+  //     console.log(err.message, err.code);
+  // });
 },[setCategories])
 //console.log(categories[0][0].author)
   const [data, setData] = useState({
