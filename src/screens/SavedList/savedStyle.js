@@ -21,6 +21,7 @@ const styles = ScaledSheet.create({
     position: 'absolute',
     top: 0,
   },
+  
   backButton: {
     position: 'absolute',
     top: 16,

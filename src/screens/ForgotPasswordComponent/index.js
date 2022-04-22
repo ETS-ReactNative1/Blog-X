@@ -42,6 +42,7 @@ export function ForgotPasswordComponent({route, navigation}) {
               "Please check your email for the password link"
               
             );
+            navigation.goBack()
         
        }
        

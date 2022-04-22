@@ -60,7 +60,11 @@ export function LoginComponent({route, navigation}) {
       //    console.warn("Sign Up");
       //  }
        const onSignInGithubPressed = () => {
-         console.warn("Sign in Github");
+        firebase
+        .auth()
+        .signOut()
+        .then(() => console.warn('User signed out!'));
+         //console.warn("Sign in Github");
        }
        const onForgotPassword = () => {
         navigation.navigate('ForgotPasswordComponent')

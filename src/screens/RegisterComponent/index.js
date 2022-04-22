@@ -1,11 +1,12 @@
 import React, { useState,useContext } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View, ScrollView , Button, useWindowDimensions} from 'react-native'
+import { Alert,Image, Text, TextInput, TouchableOpacity, View, ScrollView , Button, useWindowDimensions} from 'react-native'
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import styles from './styles';
 import { firebase } from '../../firebase/config'
 import {AuthContext} from '../../context';
 import Logo from '../../assets/photos/logo.png';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export function RegisterComponent({route, navigation}) {
     const {state, dispatch} = useContext(AuthContext);
@@ -31,18 +32,36 @@ export function RegisterComponent({route, navigation}) {
            .then(userCredentials => {
              const user = userCredentials.user;
              console.warn('Registered with:', username);
+             Alert.alert(
+              "You have been registered",
+              "Please log in to continue"
+              
+            );
+             if (user) {
+              navigation.goBack()
+            }
            })
            .catch(error => alert(error.message))
-     
+           
+           
        }
-       const OnLoginPressed = () => {
+       const onGoBack = () => {
         navigation.goBack()
-       }
+      
+     }
        //import { LoginComponent } from '../LoginComponent';
      
     return (
         
     <ScrollView>
+      <View style={[styles.bgContainer]}>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress = {() => onGoBack}
+            >
+            <MaterialIcons name="keyboard-arrow-left" size={25} color="#000" />
+          </TouchableOpacity>
+      </View>
     <View style = {styles.root}>
       <Image  source={Logo} style ={[styles.logo, {height:height*0.3}]} resizeMode="contain"/>
       <CustomInput 
@@ -63,13 +82,7 @@ export function RegisterComponent({route, navigation}) {
       bgColor="#e3e3e3"
       fgColor="#363636"
       />
-      <CustomButton 
-      text="Already have an acount? Login"
-      onPress = {OnLoginPressed}
-      type="PRIMARY"
-      bgColor="#e3e3e3"
-      fgColor="#363636"
-      />
+      
     </View>
     </ScrollView>
     );
