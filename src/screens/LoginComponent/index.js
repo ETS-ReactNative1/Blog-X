@@ -29,14 +29,20 @@ export function LoginComponent({route, navigation}) {
             .signInWithEmailAndPassword(username, password)
             .then((response) => {
                 const uid = response.user.uid
-                console.warn(uid)
+                //console.warn(uid)
                 navigation.navigate('Home')
             })
             .then(async data => {
               //console.warn("cc")
-              const jwtToken = await firebase.auth().currentUser?.getIdTokenResult();
-              console.warn(jwtToken.token)
-              console.log(jwtToken.token)
+              const jwtToken = await firebase.auth().currentUser.getIdToken(true).then(function(jwtToken) {
+                console.log(jwtToken)
+                // console.warn(jwtToken)
+                // Send token to your backend via HTTPS
+                // ...
+              }).catch(function(error) {
+                // Handle error
+              });
+              
               //console.warn("dd")
             })
             .catch(error => {
