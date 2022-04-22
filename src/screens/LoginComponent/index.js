@@ -14,28 +14,43 @@ export function LoginComponent({route, navigation}) {
     const [password, setPassword]= useState('');
   
     const {height}=useWindowDimensions();
-
+    // firebase.auth().onAuthStateChanged(function(user) {
+    //   if (user) {
+    //       //console.log(user); // It shows the Firebase user
+    //       //console.log(firebase.auth().user); // It is still undefined
+    //       user.getIdToken().then(function(idToken) {  // <------ Check this line
+    //          console.log(idToken); // It shows the Firebase token now
+    //       });
+    //   }
+  // });
     const onSignInPressed = () => {
         firebase
             .auth()
             .signInWithEmailAndPassword(username, password)
             .then((response) => {
                 const uid = response.user.uid
-                console.log(response.user)
+                console.warn(uid)
                 navigation.navigate('Home')
+            })
+            .then(async data => {
+              //console.warn("cc")
+              const jwtToken = await firebase.auth().currentUser?.getIdTokenResult();
+              console.warn(jwtToken.token)
+              //console.warn("dd")
             })
             .catch(error => {
                 alert(error)
             })
     }
     const onRegisterPressed = () => {
-        /* auth()
+      firebase
+           .auth()
            .createUserWithEmailAndPassword(username, password)
            .then(userCredentials => {
              const user = userCredentials.user;
-             console.log('Registered with:', user.username);
+             console.warn('Registered with:', username);
            })
-           .catch(error => alert(error.message))*/
+           .catch(error => alert(error.message))
      
        }
        const onSignInGooglePressed = () => {
