@@ -36,38 +36,40 @@ export function LoginComponent({route, navigation}) {
               //console.warn("cc")
               const jwtToken = await firebase.auth().currentUser?.getIdTokenResult();
               console.warn(jwtToken.token)
+              console.log(jwtToken.token)
               //console.warn("dd")
             })
             .catch(error => {
                 alert(error)
             })
     }
-    const onRegisterPressed = () => {
-      firebase
-           .auth()
-           .createUserWithEmailAndPassword(username, password)
-           .then(userCredentials => {
-             const user = userCredentials.user;
-             console.warn('Registered with:', username);
-           })
-           .catch(error => alert(error.message))
-     
-       }
+    
        const onSignInGooglePressed = () => {
          console.warn("Sign in Google");
        }
        const onSignInApplePressed = () => {
          console.warn("Sign in Apple");
        }
-       const onSignUpPressed = () => {
-         console.warn("Sign Up");
-       }
+      //  const onSignUpPressed = () => {
+      //    console.warn("Sign Up");
+      //  }
        const onSignInGithubPressed = () => {
          console.warn("Sign in Github");
        }
        const onForgotPassword = () => {
-         console.warn("Forgot Password");
+         //console.warn("Forgot Password");
+         
+          firebase.auth().sendPasswordResetEmail(username)
+            .then(function (user) {
+              console.warn('Please check your email...')
+            }).catch(function (e) {
+              console.log(e)
+            })
+        
        }
+       const onSignUpPressed = () => {
+        navigation.navigate('RegisterComponent')
+      }
      
     return (
         
@@ -105,13 +107,6 @@ export function LoginComponent({route, navigation}) {
       <CustomButton 
       text="Sign In with Apple"
       onPress = {onSignInApplePressed}
-      type="PRIMARY"
-      bgColor="#e3e3e3"
-      fgColor="#363636"
-      />
-      <CustomButton 
-      text="Register now"
-      onPress = {onRegisterPressed}
       type="PRIMARY"
       bgColor="#e3e3e3"
       fgColor="#363636"
