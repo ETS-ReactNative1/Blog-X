@@ -54,14 +54,7 @@ export function RegisterComponent({route, navigation}) {
     return (
         
     <ScrollView>
-      <View style={[styles.bgContainer]}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress = {() => onGoBack}
-            >
-            <MaterialIcons name="keyboard-arrow-left" size={25} color="#000" />
-          </TouchableOpacity>
-      </View>
+      
     <View style = {styles.root}>
       <Image  source={Logo} style ={[styles.logo, {height:height*0.3}]} resizeMode="contain"/>
       <CustomInput 
@@ -78,6 +71,13 @@ export function RegisterComponent({route, navigation}) {
       <CustomButton 
       text="Register now"
       onPress = {onRegisterPressed}
+      type="PRIMARY"
+      bgColor="#e3e3e3"
+      fgColor="#363636"
+      />
+      <CustomButton 
+      text="Back to Login"
+      onPress = {onGoBack}
       type="PRIMARY"
       bgColor="#e3e3e3"
       fgColor="#363636"

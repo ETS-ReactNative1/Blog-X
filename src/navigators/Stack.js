@@ -63,11 +63,7 @@ const DrawerStack = () => {
       onPress = {onSignOut}
       type = "TERTIARY"
       /> */}
-      <Drawer.Screen
-        name="ForgotPasswordComponent"
-        component={ForgotPasswordComponent}
-        options={{headerShown: false}}
-      />
+      
        <Drawer.Screen
         name="RegisterComponent"
         component={RegisterComponent}
@@ -81,6 +77,11 @@ const DrawerStack = () => {
        <Drawer.Screen
         name="Saved"
         component={SavedList}
+        options={{headerShown: false}}
+      />
+      <Drawer.Screen
+        name="ForgotPasswordComponent"
+        component={ForgotPasswordComponent}
         options={{headerShown: false}}
       />
     </Drawer.Navigator>

@@ -63,8 +63,13 @@ export function LoginComponent({route, navigation}) {
         firebase
         .auth()
         .signOut()
-        .then(() => console.warn('User signed out!'));
+        
          //console.warn("Sign in Github");
+         Alert.alert(
+          "User Logged out",
+          "You have been successfully logged out!"
+          
+        );
        }
        const onForgotPassword = () => {
         navigation.navigate('ForgotPasswordComponent')
@@ -100,7 +105,7 @@ export function LoginComponent({route, navigation}) {
       onPress = {onForgotPassword}
       type = "TERTIARY"
       />
-      <CustomButton 
+      {/* <CustomButton 
       text="Sign In with Google"
       onPress = {onSignInGooglePressed}
       type="PRIMARY"
@@ -113,9 +118,9 @@ export function LoginComponent({route, navigation}) {
       type="PRIMARY"
       bgColor="#e3e3e3"
       fgColor="#363636"
-      />
+      /> */}
       <CustomButton 
-      text="Sign In with Github"
+      text="Log Out"
       onPress = {onSignInGithubPressed}
       type="PRIMARY"
       bgColor="#e3e3e3"
