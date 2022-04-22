@@ -1,6 +1,7 @@
 import React from 'react';
 import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
+import CustomButton from '../components/CustomButton/CustomButton';
 import {Home, 
   LoginComponent,
   //RegisterComponent,
@@ -21,7 +22,9 @@ import { ForgotPasswordComponent } from '../screens/ForgotPasswordComponent';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 MaterialIcons.loadFont().then();
-
+const onSignOut = () => {
+  console.warn("Sign in Google");
+}
 const DrawerStack = () => {
   return (
     <Drawer.Navigator
@@ -54,17 +57,22 @@ const DrawerStack = () => {
           // )
         }}
       />
-       
+      
+       {/* <CustomButton 
+      text="Sign Out"
+      onPress = {onSignOut}
+      type = "TERTIARY"
+      /> */}
       <Drawer.Screen
         name="ForgotPasswordComponent"
         component={ForgotPasswordComponent}
         options={{headerShown: false}}
       />
-      { <Drawer.Screen
+       <Drawer.Screen
         name="RegisterComponent"
         component={RegisterComponent}
         options={{headerShown: false}}
-      /> }
+      />
       <Drawer.Screen
         name="Roadmaps"
         component={MyRoadmaps}
