@@ -1,5 +1,5 @@
 import React, { useState,useContext } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View, ScrollView , Button, useWindowDimensions} from 'react-native'
+import { Image, Text, TextInput, TouchableOpacity, View, ScrollView , Button, useWindowDimensions,Alert} from 'react-native'
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import styles from './styles';
@@ -67,10 +67,15 @@ export function LoginComponent({route, navigation}) {
          
           firebase.auth().sendPasswordResetEmail(username)
             .then(function (user) {
-              console.warn('Please check your email...')
+              //console.warn('Please check your email...')
             }).catch(function (e) {
               console.log(e)
             })
+            Alert.alert(
+              "Password Sent",
+              "Please check your email for the password link"
+              
+            );
         
        }
        const onSignUpPressed = () => {
