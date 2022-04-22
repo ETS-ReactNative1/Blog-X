@@ -149,7 +149,7 @@ export function updateRoadmap({route, navigation}) {
 };
 var id = roadmap.id;
 console.log(id);
-    const response = await axios.put(`http://project700-backend.herokuapp.com/roadmap`+id, postData);
+    const response = await axios.put(`https://project700-backend-neo.herokuapp.com/roadmap`+id, postData);
     try{
     if (response.status === 200) {
       console.log(` You have updated: ${JSON.stringify(response.data)}`);

@@ -178,7 +178,7 @@ const styles = ScaledSheet.create({
     textAlign: "center"
   },
   closeIcon: {
-    marginLeft: '43%',
+    marginRight: '43%',
     color: 'red'
   },
 });

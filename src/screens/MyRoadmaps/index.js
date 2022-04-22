@@ -57,7 +57,7 @@ export function MyRoadmaps({navigation}) {
       displayedCategories = categories?.filter((category) => category.name === 'Data Structure');
     } 
     else if (index === 2) {
-      displayedCategories = categories?.filter((category) => category.name === 'Intro to ML');
+      displayedCategories = categories?.filter((category) => category.name === 'Intro to ML' || category.name === 'Intro review to DL');
     } 
 
     setData({...data, activeTab, displayedCategories});
@@ -72,7 +72,7 @@ export function MyRoadmaps({navigation}) {
   };
   const fetchApiCall = async () => {
     try {
-     const response = await fetch("http://project700-backend.herokuapp.com/roadmap", {
+     const response = await fetch("https://project700-backend-neo.herokuapp.com/roadmap", {
       "method": "GET",
     })
     const json = await response.json();

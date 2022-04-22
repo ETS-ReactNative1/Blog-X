@@ -81,11 +81,12 @@ export function Home({navigation}) {
   };
   const fetchApiCall = async () => {
     try {
-     const response = await fetch("http://project700-backend.herokuapp.com/roadmap", {
+     const response = await fetch("https://project700-backend-neo.herokuapp.com/roadmap", {
       "method": "GET",
     })
     const json = await response.json();
-    setCategories(json.data);
+    setCategories(json.roadmaps);
+    console.log(json)
   } catch (error) {
         console.log(error);
       }

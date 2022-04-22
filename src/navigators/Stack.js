@@ -1,7 +1,7 @@
 import React from 'react';
 import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Home, coursesList,MyRoadmaps,createRoadmap, initRoadmap, readingList, updateInitRoadmap, updateRoadmap, SavedList, viewPdf, viewLevels, viewList} from '../screens';
+import {Home, LoginComponent,coursesList,MyRoadmaps,createRoadmap, initRoadmap, readingList, updateInitRoadmap, updateRoadmap, SavedList, viewPdf, viewLevels, viewList} from '../screens';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Stack = createStackNavigator();
@@ -18,6 +18,7 @@ const DrawerStack = () => {
         },
       }}
     >
+
       <Drawer.Screen
         name="Home"
         component={Home}
@@ -34,6 +35,11 @@ const DrawerStack = () => {
           //   />
           // )
         }}
+      />
+       <Drawer.Screen
+        name="Login"
+        component={LoginComponent}
+        options={{headerShown: false}}
       />
       <Drawer.Screen
         name="Roadmaps"
@@ -52,6 +58,7 @@ const DrawerStack = () => {
 const SingleStack = () => {
   return (
     <Stack.Navigator>
+
       <Stack.Screen
         name="coursesList"
         component={coursesList}

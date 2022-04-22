@@ -41,7 +41,7 @@ export function CourseDetail({courseDetail, roadmapName, level, navigation}) {
         "3": []
       }
     }
-    const response = await axios.post(`http://project700-backend.herokuapp.com/roadmap`, postData);
+    const response = await axios.post(`https://project700-backend-neo.herokuapp.com/roadmap`, postData);
     try{
     if (response.status === 200) {
       console.log(` You have created: ${JSON.stringify(response.data)}`);
@@ -80,8 +80,11 @@ export function CourseDetail({courseDetail, roadmapName, level, navigation}) {
     });
   };
 
-  const handleNavigation = (route, param) => {
-    navigation?.navigate('SingleStack', {screen: route, params: {url: param}});
+  const handleNavigation = (route, param1, param2) => {
+    if(param1.substr(param1.length - 3) != "pdf")
+      Linking.openURL(param1)
+    else
+      navigation?.navigate('SingleStack', {screen: route, params: {url: param1, title: param2}});
   };
 
   return (
@@ -104,7 +107,7 @@ export function CourseDetail({courseDetail, roadmapName, level, navigation}) {
                 size={20}
                 style={styles.saveIcon} />Save</Text>
           </TouchableOpacity>
-          <Text numberOfLines={2} ellipsizeMode="tail" style={styles.courseInfo} onPress={()=> handleNavigation('viewPdf', courseDetail?.link)}>
+          <Text numberOfLines={2} ellipsizeMode="tail" style={styles.courseInfo} onPress={()=> handleNavigation('viewPdf', courseDetail?.link, courseDetail?.title)}>
             {courseDetail?.title}
           </Text>
           <TouchableOpacity
