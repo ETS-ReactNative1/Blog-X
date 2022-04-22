@@ -17,6 +17,7 @@ import {Home,
   viewList} from '../screens';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { RegisterComponent } from '../screens/RegisterComponent';
+import { ForgotPasswordComponent } from '../screens/ForgotPasswordComponent';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 MaterialIcons.loadFont().then();
@@ -31,7 +32,11 @@ const DrawerStack = () => {
         },
       }}
     >
-
+      <Drawer.Screen
+        name="Login"
+        component={LoginComponent}
+        options={{headerShown: false}}
+      />
       <Drawer.Screen
         name="Home"
         component={Home}
@@ -49,9 +54,10 @@ const DrawerStack = () => {
           // )
         }}
       />
-       <Drawer.Screen
-        name="Login"
-        component={LoginComponent}
+       
+      <Drawer.Screen
+        name="ForgotPasswordComponent"
+        component={ForgotPasswordComponent}
         options={{headerShown: false}}
       />
       { <Drawer.Screen

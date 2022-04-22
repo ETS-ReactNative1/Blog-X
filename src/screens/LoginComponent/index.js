@@ -63,19 +63,7 @@ export function LoginComponent({route, navigation}) {
          console.warn("Sign in Github");
        }
        const onForgotPassword = () => {
-         //console.warn("Forgot Password");
-         
-          firebase.auth().sendPasswordResetEmail(username)
-            .then(function (user) {
-              //console.warn('Please check your email...')
-            }).catch(function (e) {
-              console.log(e)
-            })
-            Alert.alert(
-              "Password Sent",
-              "Please check your email for the password link"
-              
-            );
+        navigation.navigate('ForgotPasswordComponent')
         
        }
        const onSignUpPressed = () => {
