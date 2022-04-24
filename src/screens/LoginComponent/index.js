@@ -1,136 +1,167 @@
 import React, { useState,useContext } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View, ScrollView , Button, useWindowDimensions,Alert} from 'react-native'
-import CustomInput from '../../components/CustomInput/CustomInput';
+//import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import styles from './styles';
-import { firebase } from '../../firebase/config'
+// import { firebase } from '../../firebase/config'
 import {AuthContext} from '../../context';
-import Logo from '../../assets/photos/logo.png';
-
+import Logo from '../../assets/pictures/blog1.png';
+const data=require('../../assets/data.json')
 export function LoginComponent({route, navigation}) {
-    const {state, dispatch} = useContext(AuthContext);
-
-    const [username, setUsername]= useState('');
-    const [password, setPassword]= useState('');
-  
+  <Image  source={data.blogs[0].image} style ={[styles.logo, {height:height*0.3}]} resizeMode="contain"/>
     const {height}=useWindowDimensions();
-    // firebase.auth().onAuthStateChanged(function(user) {
-    //   if (user) {
-    //       //console.log(user); // It shows the Firebase user
-    //       //console.log(firebase.auth().user); // It is still undefined
-    //       user.getIdToken().then(function(idToken) {  // <------ Check this line
-    //          console.log(idToken); // It shows the Firebase token now
-    //       });
-    //   }
-  // });
-    const onSignInPressed = () => {
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(username, password)
-            .then((response) => {
-                const uid = response.user.uid
-                //console.warn(uid)
-                navigation.navigate('Home')
-            })
-            .then(async data => {
-              //console.warn("cc")
-              const jwtToken = await firebase.auth().currentUser.getIdToken(true).then(function(jwtToken) {
-                console.log(jwtToken)
-                // console.warn(jwtToken)
-                // Send token to your backend via HTTPS
-                // ...
-              }).catch(function(error) {
-                // Handle error
-              });
-              
-              //console.warn("dd")
-            })
-            .catch(error => {
-                alert(error)
-            })
+    const onBlog1Pressed = () => {
+      var temp = data.blogs[0].content;
+      console.warn(temp)
     }
-    
-       const onSignInGooglePressed = () => {
-         console.warn("Sign in Google");
-       }
-       const onSignInApplePressed = () => {
-         console.warn("Sign in Apple");
-       }
-      //  const onSignUpPressed = () => {
-      //    console.warn("Sign Up");
-      //  }
-       const onSignInGithubPressed = () => {
-        firebase
-        .auth()
-        .signOut()
-        
-         //console.warn("Sign in Github");
-         Alert.alert(
-          "User Logged out",
-          "You have been successfully logged out!"
-          
-        );
-       }
-       const onForgotPassword = () => {
-        navigation.navigate('ForgotPasswordComponent')
-        
-       }
-       const onSignUpPressed = () => {
-        navigation.navigate('RegisterComponent')
-      }
+
+    const onBlog2Pressed = () => {
+      var temp = data.blogs[1].id;
+      // Alert.alert(
+      //   "Alert",
+      //   temp
+      // );
+      console.warn(temp)
+    }
+
+    const onBlog3Pressed = () => {
+      var temp = data.blogs[2].id;
+      // Alert.alert(
+      //   "Alert",
+      //   temp
+      // );
+      console.warn(temp)
+    }
+
+    const onBlog4Pressed = () => {
+      var temp = data.blogs[3].id;
+      // Alert.alert(
+      //   "Alert",
+      //   temp
+      // );
+      console.warn(temp)
+    }
+
+    const onBlog5Pressed = () => {
+      var temp = data.blogs[4].id;
+      // Alert.alert(
+      //   "Alert",
+      //   temp
+      // );
+      console.warn(temp)
+    }
+
+    const onBlog6Pressed = () => {
+      var temp = data.blogs[5].id;
+      // Alert.alert(
+      //   "Alert",
+      //   temp
+      // );
+      console.warn(temp)
+    }
+
+    const onBlog7Pressed = () => {
+      var temp = data.blogs[6].id;
+      // Alert.alert(
+      //   "Alert",
+      //   temp
+      // );
+      console.warn(temp)
+    }
+
+    const onBlog8Pressed = () => {
+      var temp = data.blogs[7].id;
+      // Alert.alert(
+      //   "Alert",
+      //   temp
+      // );
+      console.warn(temp)
+    }
+
+    const onBlog9Pressed = () => {
+      var temp = data.blogs[8].id;
+      Alert.alert(
+        "Alert",
+        temp
+      );
+      console.warn(temp)
+    }
+
+    const onBlog10Pressed = () => {
+      var temp = data.blogs[9].id;
+      // Alert.alert(
+      //   "Alert",
+      //   temp
+      // );
+      console.warn(temp)
+    }
      
     return (
         
     <ScrollView>
     <View style = {styles.root}>
       <Image  source={Logo} style ={[styles.logo, {height:height*0.3}]} resizeMode="contain"/>
-      <CustomInput 
-      placeholder="Username" 
-      value={username} 
-      setValue={setUsername}
-
-      secureTextEntry="False"/>
-      <CustomInput 
-      placeholder="Password" 
-      value={password} 
-      setValue={setPassword}
-      secureTextEntry="True"/>
+     
       <CustomButton 
-      text="Sign In"
-      onPress = {onSignInPressed}
-      type="PRIMARY"
-      />
-      <CustomButton 
-      text="Forgot Password?"
-      onPress = {onForgotPassword}
-      type = "TERTIARY"
-      />
-      {/* <CustomButton 
-      text="Sign In with Google"
-      onPress = {onSignInGooglePressed}
-      type="PRIMARY"
-      bgColor="#FAE9EA"
-      fgColor="#DD4D44"
-      />
-      <CustomButton 
-      text="Sign In with Apple"
-      onPress = {onSignInApplePressed}
-      type="PRIMARY"
-      bgColor="#e3e3e3"
-      fgColor="#363636"
-      /> */}
-      <CustomButton 
-      text="Log Out"
-      onPress = {onSignInGithubPressed}
-      type="PRIMARY"
-      bgColor="#e3e3e3"
-      fgColor="#363636"
-      />
-      <CustomButton 
-      text="Don't have an account? Create one"
-      onPress = {onSignUpPressed}
+      text="Blog 1"
+      onPress = {onBlog1Pressed}
       type="TERTIARY"
       />
+
+      <CustomButton 
+      text="Blog 2"
+      onPress = {onBlog2Pressed}
+      type="TERTIARY"
+      />
+
+      <CustomButton 
+      text="Blog 3"
+      onPress = {onBlog3Pressed}
+      type="TERTIARY"
+      />  
+
+      <CustomButton 
+      text="Blog 4"
+      onPress = {onBlog4Pressed}
+      type="TERTIARY"
+      />
+
+      <CustomButton 
+      text="Blog 5"
+      onPress = {onBlog5Pressed}
+      type="TERTIARY"
+      />
+
+      <CustomButton 
+      text="Blog 6"
+      onPress = {onBlog6Pressed}
+      type="TERTIARY"
+      />
+
+      <CustomButton 
+      text="Blog 7"
+      onPress = {onBlog7Pressed}
+      type="TERTIARY"
+      />
+
+    <CustomButton 
+      text="Blog 8"
+      onPress = {onBlog8Pressed}
+      type="TERTIARY"
+      />
+
+      <CustomButton 
+      text="Blog 9"
+      onPress = {onBlog9Pressed}
+      type="TERTIARY"
+      />
+
+      <CustomButton 
+      text="Blog 10"
+      onPress = {onBlog10Pressed}
+      type="TERTIARY"
+      /> 
+           
     </View>
     </ScrollView>
     );
