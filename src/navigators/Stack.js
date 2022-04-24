@@ -40,50 +40,7 @@ const DrawerStack = () => {
         component={LoginComponent}
         options={{headerShown: false}}
       />
-      <Drawer.Screen
-        name="Home"
-        component={Home}
-        options={{ headerShown: false,
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            fontSize : 45,
-          },
-          // drawerIcon: ({focused}) => (
-          //   <MaterialIcons
-          //     name="keyboard-arrow-left"
-          //     size = {45}
-          //     color={focused ? '#7cc' : '#ccc'}
-          //   />
-          // )
-        }}
-      />
       
-       {/* <CustomButton 
-      text="Sign Out"
-      onPress = {onSignOut}
-      type = "TERTIARY"
-      /> */}
-      
-       <Drawer.Screen
-        name="RegisterComponent"
-        component={RegisterComponent}
-        options={{headerShown: false}}
-      />
-      <Drawer.Screen
-        name="Roadmaps"
-        component={MyRoadmaps}
-        options={{headerShown: false}}
-      />
-       <Drawer.Screen
-        name="Saved"
-        component={SavedList}
-        options={{headerShown: false}}
-      />
-      <Drawer.Screen
-        name="ForgotPasswordComponent"
-        component={ForgotPasswordComponent}
-        options={{headerShown: false}}
-      />
     </Drawer.Navigator>
   );
 };
@@ -92,51 +49,7 @@ const SingleStack = () => {
   return (
     <Stack.Navigator>
       
-      <Stack.Screen
-        name="coursesList"
-        component={coursesList}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="readingList"
-        component={readingList}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="initRoadmap"
-        component={initRoadmap}
-        options={{headerShown: false}}
-      />
-       <Stack.Screen
-        name="createRoadmap"
-        component={createRoadmap}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="updateInitRoadmap"
-        component={updateInitRoadmap}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="updateRoadmap"
-        component={updateRoadmap}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="viewPdf"
-        component={viewPdf}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="viewList"
-        component={viewList}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="viewLevels"
-        component={viewLevels}
-        options={{headerShown: false}}
-      />
+      
     </Stack.Navigator>
     
   );
