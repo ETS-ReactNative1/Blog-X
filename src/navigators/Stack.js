@@ -2,23 +2,10 @@ import React from 'react';
 import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
 import CustomButton from '../components/CustomButton/CustomButton';
-import {Home, 
-  LoginComponent,
-  //RegisterComponent,
-  coursesList,
-  MyRoadmaps,
-  createRoadmap, 
-  initRoadmap, 
-  readingList, 
-  updateInitRoadmap,
-  updateRoadmap, 
-  SavedList, 
-  viewPdf, 
-  viewLevels, 
-  viewList} from '../screens';
+
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { RegisterComponent } from '../screens/RegisterComponent';
-import { ForgotPasswordComponent } from '../screens/ForgotPasswordComponent';
+import { BlogComponent,LoginComponent } from '../screens';
+
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 MaterialIcons.loadFont().then();
@@ -30,7 +17,7 @@ const DrawerStack = () => {
     <Drawer.Navigator
       screenOptions={{
         drawerStyle: {
-          backgroundColor: '#c6cbef',
+          backgroundColor: '#fff',
           width: 240,
         },
       }}
@@ -40,34 +27,47 @@ const DrawerStack = () => {
         component={LoginComponent}
         options={{headerShown: false}}
       />
+      <Drawer.Screen
+        name="BlogComponent"
+        component={BlogComponent}
+        options={{headerShown: false}}
+      />
       
     </Drawer.Navigator>
   );
 };
 
-const SingleStack = () => {
-  return (
-    <Stack.Navigator>
+// const SingleStack = () => {
+//   return (
+//     <Stack.Navigator>
+//       <Drawer.Screen
+//         name="BlogComponent"
+//         component={BlogComponent}
+//         options={{headerShown: false}}
+//       />
       
-      
-    </Stack.Navigator>
+//     </Stack.Navigator>
     
-  );
-};
+//   );
+// };
 
 function AppStack() {
   return (
-    <Stack.Navigator initialRouteName="DrawerStack">
+    <Stack.Navigator initialRouteName="DrawerStack"
+    screenOptions={{
+      headerStyle: { elevation: 0 },
+      cardStyle: { backgroundColor: '#28282B' } }}
+      >
       <Stack.Screen
         name="DrawerStack"
         component={DrawerStack}
         options={{headerShown: false}}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="SingleStack"
         component={SingleStack}
         options={{headerShown: false}}
-      />
+      /> */}
     </Stack.Navigator>
   );
 }

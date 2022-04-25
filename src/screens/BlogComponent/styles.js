@@ -1,7 +1,36 @@
 import { StyleSheet } from 'react-native';
-import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default StyleSheet.create({
+    image_caption:{
+        textAlign: 'center',
+   // fontWeight: 'bold',
+    fontStyle: 'italic',
+    fontSize: 12,
+   // textDecorationLine: 'underline',
+    //line-through is the trick
+    },
+    date:{
+        textAlign: 'center',
+        // fontWeight: 'bold',
+         fontStyle: 'italic',
+         fontSize: 10,
+    },
+    author:{
+        textAlign: 'center',
+        // fontWeight: 'bold',
+         fontStyle: 'italic',
+         fontSize: 10,
+    },
+    content:{
+        textAlign: 'justify',
+        color:'black', 
+        margin: 20
+    },
+    blog_title:{
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 20
+    },
     container: {
         flex: 1,
         alignItems: 'center'
@@ -9,6 +38,18 @@ export default StyleSheet.create({
     title: {
 
     },
+    backButton: {
+        position: 'absolute',
+        top: 16,
+        left: 16,
+        backgroundColor: '#eee',
+        height: 32,
+        width: 32,
+        borderRadius: 5,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
     logo: {
         flex: 1,
         height: 120,
