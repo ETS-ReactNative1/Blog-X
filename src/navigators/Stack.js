@@ -5,6 +5,7 @@ import CustomButton from '../components/CustomButton/CustomButton';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { BlogComponent,LoginComponent } from '../screens';
+import { Blog1 ,Blog2,Blog3} from '../screens';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -19,14 +20,33 @@ const DrawerStack = () => {
       }}
     >
       <Drawer.Screen
-        name="Login"
+        name="Home"
         component={LoginComponent}
         options={{headerShown: false}}
       />
       <Drawer.Screen
+        name="Blog 1"
+        component={Blog1}
+        options={{headerShown: false}}
+      />
+
+      <Drawer.Screen
+        name="Blog 2"
+        component={Blog2}
+        options={{headerShown: false}}
+      />
+
+       <Drawer.Screen
+        name="Blog 3"
+        component={Blog3}
+        options={{headerShown: false}}
+      />
+
+      <Drawer.Screen
         name="BlogComponent"
         component={BlogComponent}
-        options={{headerShown: false}}
+        // options={{headerShown: false}}
+        options={{drawerLabel: () => null}}
       />
       
     </Drawer.Navigator>

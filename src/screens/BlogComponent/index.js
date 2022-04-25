@@ -3,16 +3,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Image, Text, TextInput, TouchableOpacity, View, ScrollView , Button, useWindowDimensions,Alert} from 'react-native'
 import CustomButton from '../../components/CustomButton/CustomButton';
 import styles from './styles';
-import Blog1 from "../../assets/pictures/blog1.png";
-import Blog2 from "../../assets/pictures/blog2.jpg";
-import blog3 from "../../assets/pictures/blog3.jpg";
-import blog4 from "../../assets/pictures/blog4.jpg";
-import Blog5 from "../../assets/pictures/blog5.png";
-import Blog6 from "../../assets/pictures/blog6.jpg";
-import Blog7 from "../../assets/pictures/blog7.jpg";
-import Blog8 from "../../assets/pictures/blog8.jpg";
-import Blog9 from "../../assets/pictures/blog9.jpg";
-import Blog10 from "../../assets/pictures/blog10.png";
+
 import {AuthContext} from '../../context';
 export function BlogComponent({route, navigation}) {
     const {height}=useWindowDimensions();

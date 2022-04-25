@@ -1,2 +1,5 @@
 export * from './LoginComponent'
 export * from './BlogComponent'
+export * from './Blog1'
+export * from './Blog2'
+export * from './Blog3'
