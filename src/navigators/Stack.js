@@ -9,15 +9,11 @@ import { BlogComponent,LoginComponent } from '../screens';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 MaterialIcons.loadFont().then();
-const onSignOut = () => {
-  console.warn("Sign in Google");
-}
 const DrawerStack = () => {
   return (
     <Drawer.Navigator
       screenOptions={{
         drawerStyle: {
-          backgroundColor: '#fff',
           width: 240,
         },
       }}
@@ -54,9 +50,7 @@ const DrawerStack = () => {
 function AppStack() {
   return (
     <Stack.Navigator initialRouteName="DrawerStack"
-    screenOptions={{
-      headerStyle: { elevation: 0 },
-      cardStyle: { backgroundColor: '#28282B' } }}
+    
       >
       <Stack.Screen
         name="DrawerStack"

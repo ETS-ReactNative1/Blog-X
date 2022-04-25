@@ -1,11 +1,9 @@
 import React, { useState,useContext } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View, ScrollView , Button, useWindowDimensions,Alert} from 'react-native'
-//import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import styles from './styles';
-// import { firebase } from '../../firebase/config'
 import {AuthContext} from '../../context';
-import Logo from '../../assets/pictures/logo1.png';
+import Logo from '../../assets/pictures/logo.png';
 import { BlogComponent } from '../BlogComponent';
 const data=require('../../assets/data.json')
 export function LoginComponent({route, navigation}) {
@@ -13,6 +11,7 @@ export function LoginComponent({route, navigation}) {
     const {height}=useWindowDimensions();
     const onBlog1Pressed = () => {
       navigation.navigate('BlogComponent',{
+        id:data.blogs[0].id,
         image_source:data.blogs[0].image,
         image_caption:data.blogs[0].image_caption,
         blog_title:data.blogs[0].title,
@@ -23,6 +22,7 @@ export function LoginComponent({route, navigation}) {
     }
     const onBlog2Pressed = () => {
       navigation.navigate('BlogComponent',{
+        id:data.blogs[1].id,
         image_source:data.blogs[1].image,
         image_caption:data.blogs[1].image_caption,
         blog_title:data.blogs[1].title,
@@ -33,6 +33,7 @@ export function LoginComponent({route, navigation}) {
     }
     const onBlog3Pressed = () => {
       navigation.navigate('BlogComponent',{
+        id:data.blogs[2].id,
         image_source:data.blogs[2].image,
         image_caption:data.blogs[2].image_caption,
         blog_title:data.blogs[2].title,
@@ -43,6 +44,7 @@ export function LoginComponent({route, navigation}) {
     }
     const onBlog4Pressed = () => {
       navigation.navigate('BlogComponent',{
+        id:data.blogs[3].id,
         image_source:data.blogs[3].image,
         image_caption:data.blogs[3].image_caption,
         blog_title:data.blogs[3].title,
@@ -53,6 +55,7 @@ export function LoginComponent({route, navigation}) {
     }
     const onBlog5Pressed = () => {
       navigation.navigate('BlogComponent',{
+        id:data.blogs[4].id,
         image_source:data.blogs[4].image,
         image_caption:data.blogs[4].image_caption,
         blog_title:data.blogs[4].title,
@@ -63,6 +66,7 @@ export function LoginComponent({route, navigation}) {
     }
     const onBlog6Pressed = () => {
       navigation.navigate('BlogComponent',{
+        id:data.blogs[5].id,
         image_source:data.blogs[5].image,
         image_caption:data.blogs[5].image_caption,
         blog_title:data.blogs[5].title,
@@ -73,6 +77,7 @@ export function LoginComponent({route, navigation}) {
     }
     const onBlog7Pressed = () => {
       navigation.navigate('BlogComponent',{
+        id:data.blogs[6].id,
         image_source:data.blogs[6].image,
         image_caption:data.blogs[6].image_caption,
         blog_title:data.blogs[6].title,
@@ -83,6 +88,7 @@ export function LoginComponent({route, navigation}) {
     }
     const onBlog8Pressed = () => {
       navigation.navigate('BlogComponent',{
+        id:data.blogs[7].id,
         image_source:data.blogs[7].image,
         image_caption:data.blogs[7].image_caption,
         blog_title:data.blogs[7].title,
@@ -93,6 +99,7 @@ export function LoginComponent({route, navigation}) {
     }
     const onBlog9Pressed = () => {
       navigation.navigate('BlogComponent',{
+        id:data.blogs[8].id,
         image_source:data.blogs[8].image,
         image_caption:data.blogs[8].image_caption,
         blog_title:data.blogs[8].title,
@@ -103,6 +110,7 @@ export function LoginComponent({route, navigation}) {
     }
     const onBlog10Pressed = () => {
       navigation.navigate('BlogComponent',{
+        id:data.blogs[9].id,
         image_source:data.blogs[9].image,
         image_caption:data.blogs[9].image_caption,
         blog_title:data.blogs[9].title,
@@ -111,73 +119,100 @@ export function LoginComponent({route, navigation}) {
         date:data.blogs[9].date,
       })
     }
-
-     
     return (
-        
     <ScrollView>
     <View style = {styles.root}>
       <Image  source={Logo} style ={[styles.logo, {height:height*0.3}]} resizeMode="contain"/>
-     
-      <CustomButton 
-      text="Blog 1"
-      onPress = {onBlog1Pressed}
-      type="TERTIARY"
-      />
+      <Text></Text>
+      {/* Blog 1 */}
+      <View  style = {styles.textual}>
+      <Text style ={styles.headingText}>{data.blogs[0].title}</Text>
+      <Text numberOfLines={2} style ={styles.text}>{data.blogs[0].content}</Text>
+      <Text style ={[styles.text, {fontStyle: 'italic', fontSize: 7}]}>Written by {data.blogs[0].author}</Text>
+      <Text style ={[styles.text, {marginLeft: 50, textAlign: "right", fontWeight: 'bold', fontSize: 11}]} onPress = {onBlog1Pressed}>Read More</Text>
+      </View>
+      <Text></Text>
 
-      <CustomButton 
-      text="Blog 2"
-      onPress = {onBlog2Pressed}
-      type="TERTIARY"
-      />
+      {/* Blog 2 */}
+      <View  style = {styles.textual}>
+      <Text style ={styles.headingText}>{data.blogs[1].title}</Text>
+      <Text numberOfLines={2} style ={styles.text}>{data.blogs[1].content}</Text>
+      <Text style ={[styles.text, {fontStyle: 'italic', fontSize: 7}]}>Written by {data.blogs[1].author}</Text>
+      <Text style ={[styles.text, {marginLeft: 50, textAlign: "right", fontWeight: 'bold', fontSize:11}]} onPress = {onBlog2Pressed}>Read More</Text>
+      </View>
+      <Text></Text>
 
-      <CustomButton 
-      text="Blog 3"
-      onPress = {onBlog3Pressed}
-      type="TERTIARY"
-      />  
+      {/* Blog 3 */}
+      <View  style = {styles.textual}>
+      <Text style ={styles.headingText}>{data.blogs[2].title}</Text>
+      <Text numberOfLines={2} style ={styles.text}>{data.blogs[2].content}</Text>
+      <Text style ={[styles.text, {fontStyle: 'italic', fontSize: 7}]}>Written by {data.blogs[2].author}</Text>
+      <Text style ={[styles.text, {marginLeft: 50, textAlign: "right", fontWeight: 'bold', fontSize:11}]} onPress = {onBlog3Pressed}>Read More</Text>
+      </View>
+      <Text></Text>
 
-      <CustomButton 
-      text="Blog 4"
-      onPress = {onBlog4Pressed}
-      type="TERTIARY"
-      />
+      {/* Blog 4 */}
+      <View  style = {styles.textual}>
+      <Text style ={styles.headingText}>{data.blogs[3].title}</Text>
+      <Text numberOfLines={2} style ={styles.text}>{data.blogs[3].content}</Text>
+      <Text style ={[styles.text, {fontStyle: 'italic', fontSize: 7}]}>Written by {data.blogs[0].author}</Text>
+      <Text style ={[styles.text, {marginLeft: 50, textAlign: "right", fontWeight: 'bold', fontSize:11}]} onPress = {onBlog4Pressed}>Read More</Text>
+      </View>
+      <Text></Text>
 
-      <CustomButton 
-      text="Blog 5"
-      onPress = {onBlog5Pressed}
-      type="TERTIARY"
-      />
+      {/* Blog 5 */}
+      <View  style = {styles.textual}>
+      <Text style ={styles.headingText}>{data.blogs[4].title}</Text>
+      <Text numberOfLines={2} style ={styles.text}>{data.blogs[4].content}</Text>
+      <Text style ={[styles.text, {fontStyle: 'italic', fontSize: 7}]}>Written by {data.blogs[4].author}</Text>
+      <Text style ={[styles.text, {marginLeft: 50, textAlign: "right", fontWeight: 'bold', fontSize:11}]} onPress = {onBlog5Pressed}>Read More</Text>
+      </View>
+      <Text></Text>
 
-      <CustomButton 
-      text="Blog 6"
-      onPress = {onBlog6Pressed}
-      type="TERTIARY"
-      />
+      {/* Blog 6 */}
+      <View  style = {styles.textual}>
+      <Text style ={styles.headingText}>{data.blogs[5].title}</Text>
+      <Text numberOfLines={2} style ={styles.text}>{data.blogs[5].content}</Text>
+      <Text style ={[styles.text, {fontStyle: 'italic', fontSize: 7}]}>Written by {data.blogs[5].author}</Text>
+      <Text style ={[styles.text, {marginLeft: 50, textAlign: "right", fontWeight: 'bold', fontSize:11}]} onPress = {onBlog6Pressed}>Read More</Text>
+      </View>
+      <Text></Text>
 
-      <CustomButton 
-      text="Blog 7"
-      onPress = {onBlog7Pressed}
-      type="TERTIARY"
-      />
+      {/* Blog 7 */}
+      <View  style = {styles.textual}>
+      <Text style ={styles.headingText}>{data.blogs[6].title}</Text>
+      <Text numberOfLines={2} style ={styles.text}>{data.blogs[6].content}</Text>
+      <Text style ={[styles.text, {fontStyle: 'italic', fontSize: 7}]}>Written by {data.blogs[6].author}</Text>
+      <Text style ={[styles.text, {marginLeft: 50, textAlign: "right", fontWeight: 'bold', fontSize:11}]} onPress = {onBlog7Pressed}>Read More</Text>
+      </View>
+      <Text></Text>
 
-    <CustomButton 
-      text="Blog 8"
-      onPress = {onBlog8Pressed}
-      type="TERTIARY"
-      />
+      {/* Blog 8 */}
+      <View  style = {styles.textual}>
+      <Text style ={styles.headingText}>{data.blogs[7].title}</Text>
+      <Text numberOfLines={2} style ={styles.text}>{data.blogs[7].content}</Text>
+      <Text style ={[styles.text, {fontStyle: 'italic', fontSize: 7}]}>Written by {data.blogs[7].author}</Text>
+      <Text style ={[styles.text, {marginLeft: 50, textAlign: "right", fontWeight: 'bold', fontSize:11}]} onPress = {onBlog8Pressed}>Read More</Text>
+      </View>
+      <Text></Text>
 
-      <CustomButton 
-      text="Blog 9"
-      onPress = {onBlog9Pressed}
-      type="TERTIARY"
-      />
+      {/* Blog 9 */}
+      <View  style = {styles.textual}>
+      <Text style ={styles.headingText}>{data.blogs[8].title}</Text>
+      <Text numberOfLines={2} style ={styles.text}>{data.blogs[8].content}</Text>
+      <Text style ={[styles.text, {fontStyle: 'italic', fontSize: 7}]}>Written by {data.blogs[8].author}</Text>
+      <Text style ={[styles.text, {marginLeft: 50, textAlign: "right", fontWeight: 'bold', fontSize:11}]} onPress = {onBlog9Pressed}>Read More</Text>
+      </View>
+      <Text></Text>
 
-      <CustomButton 
-      text="Blog 10"
-      onPress = {onBlog10Pressed}
-      type="TERTIARY"
-      /> 
+      {/* Blog 10 */}
+      <View  style = {styles.textual}>
+      <Text style ={styles.headingText}>{data.blogs[9].title}</Text>
+      <Text numberOfLines={2} style ={styles.text}>{data.blogs[9].content}</Text>
+      <Text style ={[styles.text, {fontStyle: 'italic', fontSize: 7}]}>Written by {data.blogs[9].author}</Text>
+      <Text style ={[styles.text, {marginLeft: 50, textAlign: "right", fontWeight: 'bold', fontSize:11}]} onPress = {onBlog10Pressed}>Read More</Text>
+      </View>
+      
            
     </View>
     </ScrollView>

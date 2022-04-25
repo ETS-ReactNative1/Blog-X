@@ -6,6 +6,81 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'center'
     },
+    button:{
+        //textAlign: 'right',
+        fontSize: 5,
+        alignContent: "right",
+        position: 'absolute',
+        marginLeft:"70"
+    },
+    picture:{
+        position: 'absolute', 
+        right: -60
+    },
+    headingText:{
+        color: 'white',
+        //textAlign: 'right',
+        fontSize: 13,
+        fontWeight: "bold",
+       // marginLeft: 100
+    },
+    textual:{
+        textAlign: 'left',
+        
+    },
+    // position: 'absolute',
+    //     top: 16,
+    //     left: 16,
+    //     backgroundColor: '#eee',
+    //     height: 32,
+    //     width: 32,
+    //     borderRadius: 5,
+    //     display: 'flex',
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+   text:{
+        color: 'white',
+        //textAlign: 'right',
+        fontSize: 9,
+        fontWeight: "bold",
+        width:300 
+    },
+    image: {
+        flex: 1,
+        resizeMode: 'cover',
+        flexDirection: 'row',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        borderTopLeftRadius: 3,
+        borderTopRightRadius: 3,
+      },
+      innerImage: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 200
+      },
+      title: {
+        margin: 15,
+        fontSize: 28,
+        fontWeight: '500',
+        color: '#fff',
+        textAlign: 'center'
+      },
+      speakerText: {
+        fontStyle: 'italic',
+        color: '#fff',
+        marginTop: 5,
+        fontSize: 16,
+      },
+      description: {
+        margin: 15,
+        marginTop: 7,
+        textAlign: 'justify',
+      },
+      floatFooter: {
+        position: 'absolute',
+        bottom: 0
+      },
     title: {
 
     },
@@ -29,7 +104,7 @@ export default StyleSheet.create({
     },
     button: {
         backgroundColor: '#788eec',
-        marginLeft: 30,
+        marginLeft: 50,
         marginRight: 30,
         marginTop: 20,
         height: 48,
@@ -59,6 +134,7 @@ export default StyleSheet.create({
     root: {
         alignItems: 'center',
         padding: 20,
+        backgroundColor: '#28282B'
       },
       logo: {
         width: '70%',

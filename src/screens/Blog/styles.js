@@ -101,7 +101,9 @@ export default StyleSheet.create({
         padding: 20,
         //backgroundColor:"#28282B"
       },
-      
+      scroll:{
+        backgroundColor:"#28282B"
+      },
       logo: {
         width: '70%',
         height: '30%',

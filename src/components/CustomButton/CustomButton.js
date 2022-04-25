@@ -20,7 +20,7 @@ const CustomButton = ({onPress,text,type="PRIMARY",bgColor,fgColor}) => {
  const styles = StyleSheet.create({
      container:{
          
-         backgroundColor: '#3B71F3',
+        // backgroundColor: '#3B71F3',
          width: '100%',
 
          padding: 15,
