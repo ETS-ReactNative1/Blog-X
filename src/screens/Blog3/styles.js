@@ -102,7 +102,7 @@ export default StyleSheet.create({
         //backgroundColor:"#28282B"
       },
       scroll:{
-        backgroundColor:"#28282B"
+        //backgroundColor:"#28282B"
       },
       logo: {
         width: '70%',

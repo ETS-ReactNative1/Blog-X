@@ -99,10 +99,10 @@ export default StyleSheet.create({
     root: {
         alignItems: 'center',
         padding: 20,
-        //backgroundColor:"#28282B"
+    //backgroundColor:"#28282B"
       },
       scroll:{
-        backgroundColor:"#28282B"
+       // backgroundColor:"#28282B"
       },
       logo: {
         width: '70%',
