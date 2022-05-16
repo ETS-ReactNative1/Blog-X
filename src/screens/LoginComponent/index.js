@@ -2,13 +2,24 @@ import React, { useState,useContext } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View, ScrollView , Button, useWindowDimensions,Alert} from 'react-native'
 import CustomButton from '../../components/CustomButton/CustomButton';
 import styles from './styles';
+import DatePicker from 'react-native-date-picker';
+import Notifications from '../../Notifications'; 
 import {AuthContext} from '../../context';
 import Logo from '../../assets/pictures/logo.png';
 import { BlogComponent } from '../BlogComponent';
 const data=require('../../assets/data.json')
+const notifications=require('../../assets/notifications.json')
 export function LoginComponent({route, navigation}) {
+  const [date, setDate] = useState(new Date());
+  const setNotification = () => {
+    
+    let today = Date.parse(notifications.date[0].timestamp);
+    
+    Notifications.schduleNotification(new Date(today));
+  };
   <Image  source={Logo} style ={[styles.logo, {height:height*0.3}]} resizeMode="contain"/>
     const {height}=useWindowDimensions();
+    
     const onBlog1Pressed = () => {
       navigation.navigate('BlogComponent',{
         id:data.blogs[0].id,
@@ -121,9 +132,14 @@ export function LoginComponent({route, navigation}) {
     }
     return (
     <ScrollView>
+      
     <View style = {styles.root}>
       <Image  source={Logo} style ={[styles.logo, {height:height*0.3}]} resizeMode="contain"/>
       <Text></Text>
+      <Button
+        title="Notify me"
+        onPress={setNotification}
+      />
       {/* Blog 1 */}
       <View  style = {styles.textual}>
       <Text style ={styles.headingText}>{data.blogs[0].title}</Text>
